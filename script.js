@@ -5,8 +5,8 @@ const game_container = document.querySelector('.game_container');
 const timeEl = document.getElementById('time');
 const scoreEl = document.getElementById('score');
 const final_message = document.getElementById('final_message');
-var cardib = document.getElementById("cardib");
-var coronatime = document.getElementById("coronatime");
+const cardib = document.getElementById("cardib");
+const coronatime = document.getElementById("coronatime");
 let seconds = 0;
 let score = 0;
 let selected_virus = {};
@@ -21,10 +21,7 @@ choose_strain_btns.forEach(btn => {
 		const img = btn.querySelector('img');
 		const src = img.getAttribute('src');
 		const alt = img.getAttribute('alt');
-		selected_virus = {
-			src,
-			alt
-		};
+		selected_virus = {src, alt};
 		screens[1].classList.add('up');
 		setTimeout(createVirus, 1000);
 		cardib.play();
@@ -52,9 +49,8 @@ function createVirus() {
 	virus.classList.add('virus');
 	virus.style.left = `${x}px`;
 	virus.style.top = `${y}px`;
-	virus.innerHTML = `<img src="${selected_virus.src}" alt="${
-		selected_virus.alt
-	}" style="transform: rotate(${Math.random() * 360}deg)"/>`;
+	virus.innerHTML = `<img src="${selected_virus.src}" alt="${selected_virus.alt}" 
+			style="transform: rotate(${Math.random() * 360}deg);"/>`;
 	virus.addEventListener('click', catchVirus);
 	game_container.appendChild(virus);
 }
@@ -88,9 +84,5 @@ function getRandomLocation() {
 	const height = window.innerHeight;
 	const x = Math.random() * (width - 200) + 100;
 	const y = Math.random() * (height - 200) + 100;
-
-	return {
-		x,
-		y
-	};
+	return {x, y};
 }
